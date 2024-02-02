@@ -14,36 +14,41 @@ import { sprite } from sprite
 
 ## Why should I use this function?
 
-The `removeBackgroundColor` function is a great choice for removing the background from images because it is:
+The `removeBackgroundColor` function is a great choice for removing the background from images for a number of reasons:
 
-* **Simple to use:** The function only requires a few parameters, and it can be easily integrated into your existing code.
-* **Efficient:** The function is optimized for performance, so you can process images quickly and efficiently.
-* **Versatile:** The function can be used to remove the background from a variety of image types, including JPEGs, PNGs, and GIFs.
+* **It's easy to use.** The function only requires a few simple parameters, and it can be used with any image format.
+* **It's fast.** The function is optimized for speed, so you can quickly remove the background from even large images.
+* **It's accurate.** The function uses a sophisticated algorithm to identify and remove the background from images, so you can be sure that the results will be accurate.
 
 ## What are the parameters or arguments required?
 
 The `removeBackgroundColor` function requires the following parameters:
 
-* **inputPath:** The path to the input image.
-* **outputPath:** The path to the output image.
-* **targetColor:** The color you want to remove from the background.
-* **colorThreshold:** (Optional) The maximum color difference between the target color and the pixels in the image.
+* **inputPath**: The path to the input image.
+* **outputPath**: The path to the output image.
+* **targetColor**: The color you want to remove from the background.
+* **colorThreshold** (optional): The maximum color difference between the target color and the pixels in the image that will be removed.
 
 ## Prerequisites
 
-Before you can use the `removeBackgroundColor` function, you will need to:
+Before you can use the `removeBackgroundColor` function, you will need to install the Sprite SDK from NPM. You can do this by running the following command:
 
-1. Install the Sprite SDK from NPM.
-2. Import the `sprite` object into your code.
+```
+npm install sprite
+```
 
 ## How do I use this function?
 
-To use the `removeBackgroundColor` function, simply call the function and pass in the required parameters. For example, the following code removes the white background from an image and saves the result to a new file:
+To use the `removeBackgroundColor` function, simply import it from the `sprite` object and call it with the appropriate parameters. For example, the following code will remove the white background from an image and save the result to a new file:
 
 ```
-const sprite = require('sprite');
+import { sprite } from sprite
 
-sprite.removeBackgroundColor('input.jpg', 'output.jpg', '#FFFFFF');
+const inputPath = 'path/to/input.jpg';
+const outputPath = 'path/to/output.jpg';
+const targetColor = '#FFFFFF';
+
+sprite.removeBackgroundColor(inputPath, outputPath, targetColor);
 ```
 
 ## Conclusion
