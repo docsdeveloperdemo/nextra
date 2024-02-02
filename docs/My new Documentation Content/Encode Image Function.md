@@ -14,43 +14,25 @@ The `encodeImage` function can be useful in a variety of scenarios. For example,
 * Store images in a database
 * Embed images in HTML documents
 
-## What are the parameters or arguments required?
+## What is params or arguements required?
 
-The `encodeImage` function takes a single parameter:
+The `encodeImage` function takes a single argument, which is the path to the image file that you want to encode.
 
-* `imagePath`: The path to the image file that you want to encode.
-
-## Prerequisites
+## Prequsites
 
 There are no prerequisites for using the `encodeImage` function.
 
 ## How do I use this function?
 
-To use the `encodeImage` function, simply import it from the `sprite` module and then call it with the path to the image file that you want to encode. For example:
+To use the `encodeImage` function, simply call it with the path to the image file that you want to encode. The function will return a base64 encoded string that represents the image.
+
+Here is an example of how to use the `encodeImage` function:
 
 ```
-import { encodeImage } from 'sprite';
-
-const base64Image = encodeImage('/path/to/image.jpg');
+const image = fs.readFileSync('image.jpg');
+const base64Image = Buffer.from(image).toString('base64');
 ```
 
-The `encodeImage` function will return a base64 encoded string that represents the image file. You can then use this string to send the image over the internet or store it in a database.
-
-## Example
-
-The following example shows how to use the `encodeImage` function to send an image to a remote server:
-
-```
-import { encodeImage } from 'sprite';
-
-const base64Image = encodeImage('/path/to/image.jpg');
-
-const request = new XMLHttpRequest();
-request.open('POST', 'https://example.com/upload-image');
-request.setRequestHeader('Content-Type', 'application/json');
-request.send(JSON.stringify({ image: base64Image }));
-```
-
-The above example will send the image file `/path/to/image.jpg` to the remote server at `https://example.com/upload-image`. The server can then decode the base64 encoded string and save the image file to disk.
+The `base64Image` variable will now contain a base64 encoded string that represents the image. You can use this string to send the image to a remote server, store it in a database, or embed it in an HTML document.
   
   
