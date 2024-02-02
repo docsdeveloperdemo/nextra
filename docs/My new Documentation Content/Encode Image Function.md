@@ -4,35 +4,53 @@
 
 High Level
 
-The `encodeImage` function is a helper function that converts an image file into a base64-encoded string. This can be useful for sending images over the network or storing them in a database.
+The `encodeImage` function is a utility function that converts an image file into a base64 encoded string. This can be useful for sending images over the internet or storing them in a database.
 
 ## Why should I use this function?
 
-The `encodeImage` function can be useful in a variety of scenarios, such as:
+The `encodeImage` function can be useful in a variety of scenarios. For example, you might use it to:
 
-* Sending images over the network: Base64-encoded images can be sent over the network more efficiently than raw image files.
-* Storing images in a database: Base64-encoded images can be stored in a database more easily than raw image files.
-* Displaying images on a web page: Base64-encoded images can be displayed on a web page using the `data:` URI scheme.
+* Send images to a remote server
+* Store images in a database
+* Embed images in HTML documents
 
-## What is params or arguements required?
+## What are the parameters or arguments required?
 
-The `encodeImage` function takes a single argument, which is the path to the image file that you want to convert.
+The `encodeImage` function takes a single parameter:
 
-## Prequsites
+* `imagePath`: The path to the image file that you want to encode.
+
+## Prerequisites
 
 There are no prerequisites for using the `encodeImage` function.
 
 ## How do I use this function?
 
-To use the `encodeImage` function, simply call it with the path to the image file that you want to convert. The function will return a base64-encoded string that represents the image.
-
-Here is an example of how to use the `encodeImage` function:
+To use the `encodeImage` function, simply import it from the `sprite` module and then call it with the path to the image file that you want to encode. For example:
 
 ```javascript
-const image = fs.readFileSync('image.png');
-const base64Image = encodeImage(image);
+import { encodeImage } from 'sprite';
+
+const base64String = encodeImage('/path/to/image.jpg');
 ```
 
-The `base64Image` variable will now contain a base64-encoded string that represents the image. You can use this string to send the image over the network or store it in a database.
+The `encodeImage` function will return a base64 encoded string that represents the image file. You can then use this string to send the image over the internet or store it in a database.
+
+## Example
+
+The following example shows how to use the `encodeImage` function to send an image to a remote server:
+
+```javascript
+import { encodeImage } from 'sprite';
+
+const base64String = encodeImage('/path/to/image.jpg');
+
+const request = new XMLHttpRequest();
+request.open('POST', 'https://example.com/upload-image');
+request.setRequestHeader('Content-Type', 'application/json');
+request.send(JSON.stringify({ image: base64String }));
+```
+
+The above example will send the image file `/path/to/image.jpg` to the remote server at `https://example.com/upload-image`. The server can then decode the base64 encoded string and save the image file to disk.
   
   
