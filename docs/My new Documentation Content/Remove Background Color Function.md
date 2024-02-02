@@ -2,51 +2,62 @@
   
    # **removeBackgroundColor**
 
-## High Level
+High Level
 
 The `removeBackgroundColor` function is a powerful tool that allows you to easily remove the background from an image. This can be useful for a variety of purposes, such as creating product images, removing unwanted objects from photos, or simply changing the background of an image.
 
+This function is exported from our Node.js SDK, which you can install from NPM. To use it, simply import the `sprite` object and call the `removeBackgroundColor` function.
+
+```
+import { sprite } from sprite
+
+sprite.removeBackgroundColor(inputPath, outputPath, targetColor, colorThreshold)
+```
+
 ## Why should I use this function?
 
-There are many reasons why you might want to use the `removeBackgroundColor` function. Some of the most common reasons include:
+The `removeBackgroundColor` function can be used for a variety of purposes, including:
 
-* **To create product images:** Product images often need to have a transparent background so that they can be easily placed on different backgrounds. The `removeBackgroundColor` function can help you to create these types of images quickly and easily.
-* **To remove unwanted objects from photos:** Sometimes, you may want to remove unwanted objects from a photo. For example, you might want to remove a person from a group photo, or you might want to remove a car from a landscape photo. The `removeBackgroundColor` function can help you to do this quickly and easily.
-* **To simply change the background of an image:** You may simply want to change the background of an image. For example, you might want to change the background of a photo to a different color, or you might want to change the background of a product image to a different scene. The `removeBackgroundColor` function can help you to do this quickly and easily.
+* Creating product images: By removing the background from product images, you can create a more professional and polished look.
+* Removing unwanted objects from photos: If there is an unwanted object in a photo, you can use the `removeBackgroundColor` function to remove it.
+* Changing the background of an image: You can use the `removeBackgroundColor` function to change the background of an image to anything you want.
 
-## What is params or arguements required?
+## What are the parameters or arguments required?
 
 The `removeBackgroundColor` function requires the following parameters:
 
-* **inputPath:** The path to the input image.
-* **outputPath:** The path to the output image.
-* **targetColor:** The color that you want to remove from the background.
-* **colorThreshold:** The maximum color difference that is allowed between the target color and the pixels in the background.
+* `inputPath`: The path to the input image.
+* `outputPath`: The path to the output image.
+* `targetColor`: The color you want to remove from the background.
+* `colorThreshold` (optional): The maximum color difference between the target color and the pixels in the image.
 
-## Prequsites
+## Prerequisites
 
-Before you can use the `removeBackgroundColor` function, you will need to install the following dependencies:
+Before using the `removeBackgroundColor` function, you must have the following installed:
 
-* **Jimp:** Jimp is a library for manipulating images in Node.js. You can install Jimp by running the following command:
-
-```
-npm install jimp
-```
+* Node.js
+* The sprite Node.js SDK
 
 ## How do I use this function?
 
-To use the `removeBackgroundColor` function, simply import it from the `sprite` module and then call it with the appropriate parameters. For example, the following code shows how to use the `removeBackgroundColor` function to remove the white background from an image:
+To use the `removeBackgroundColor` function, simply follow these steps:
+
+1. Import the `sprite` object from the sprite Node.js SDK.
+2. Call the `removeBackgroundColor` function, specifying the input path, output path, target color, and color threshold (optional).
+3. The function will remove the background from the input image and save the output image to the specified output path.
+
+Here is an example of how to use the `removeBackgroundColor` function:
 
 ```
-const sprite = require('sprite');
+const sprite = require('sprite')
 
-sprite.removeBackgroundColor('input.jpg', 'output.jpg', '#FFFFFF');
+sprite.removeBackgroundColor('input.jpg', 'output.jpg', '#FFFFFF')
 ```
 
-This will create a new image called `output.jpg` with the white background removed.
+This will remove the white background from the input image and save the output image to the output path.
 
 ## Conclusion
 
-The `removeBackgroundColor` function is a powerful tool that can be used to easily remove the background from an image. This can be useful for a variety of purposes, such as creating product images, removing unwanted objects from photos, or simply changing the background of an image.
+The `removeBackgroundColor` function is a powerful tool that can be used for a variety of purposes. By following the steps outlined in this document, you can easily use this function to remove the background from images and create professional-looking results.
   
   
