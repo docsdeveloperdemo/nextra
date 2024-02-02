@@ -4,24 +4,28 @@
 
 High Level
 
-The `image.scan()` method is used to iterate over each pixel in an image and perform a specific action on each pixel. This method is useful for tasks such as image processing, color correction, and image manipulation.
+The `image.scan()` method is used to scan an image for a specific color and make it transparent. This can be useful for removing backgrounds from images or for creating transparent overlays.
 
 ## Why should I use this function?
 
-The `image.scan()` method is a powerful tool for manipulating images. It allows you to perform a variety of operations on each pixel in an image, giving you complete control over the image's appearance.
+The `image.scan()` method can be used to achieve a variety of effects, including:
+
+* Removing backgrounds from images
+* Creating transparent overlays
+* Changing the color of specific objects in an image
 
 ## What are the parameters or arguments required?
 
 The `image.scan()` method takes the following parameters:
 
-* `x`: The starting x-coordinate of the scan.
-* `y`: The starting y-coordinate of the scan.
+* `x`: The x-coordinate of the starting point of the scan.
+* `y`: The y-coordinate of the starting point of the scan.
 * `width`: The width of the area to be scanned.
 * `height`: The height of the area to be scanned.
-* `callback`: A function that will be called for each pixel in the scanned area. The function will be passed the following arguments:
-    * `x`: The x-coordinate of the current pixel.
-    * `y`: The y-coordinate of the current pixel.
-    * `idx`: The index of the current pixel in the image's data array.
+* `callback`: A function that will be called for each pixel in the scanned area. The callback function takes the following parameters:
+    * `x`: The x-coordinate of the pixel.
+    * `y`: The y-coordinate of the pixel.
+    * `idx`: The index of the pixel in the image data array.
 
 ## Prerequisites
 
@@ -33,22 +37,29 @@ import Jimp from "jimp";
 
 ## How do I use this function?
 
-The following code shows you how to use the `image.scan()` method to make all of the pixels in an image transparent:
+To use the `image.scan()` method, simply call it on an image object and pass in the desired parameters. For example, the following code will scan an image for the color red and make it transparent:
 
 ```
-const image = new Jimp(200, 200, 0xFFFFFFFF);
+const image = new Jimp("image.png");
 
 image.scan(0, 0, image.bitmap.width, image.bitmap.height, function (x, y, idx) {
-  this.bitmap.data[idx + 3] = 0; // Set alpha to 0 (transparent)
+    const red = this.bitmap.data[idx + 0];
+    const green = this.bitmap.data[idx + 1];
+    const blue = this.bitmap.data[idx + 2];
+    const currentColor = Jimp.rgbaToInt(red, green, blue, 255);
+
+    // Calculate the color difference
+    const colorDiff = Jimp.colorDiff({ r: red, g: green, b: blue }, Jimp.intToRGBA(colorToReplace));
+
+    // If the color difference is less than the threshold, make it transparent
+    if (colorDiff <= colorThreshold) {
+        this.bitmap.data[idx + 3] = 0; // Set alpha to 0 (transparent)
+    }
 });
-
-image.write("transparent.png");
 ```
-
-This code will create a new image that is 200 pixels wide and 200 pixels high. All of the pixels in the image will be transparent. The image will be saved to a file named "transparent.png".
 
 ## Conclusion
 
-The `image.scan()` method is a powerful tool for manipulating images. It allows you to perform a variety of operations on each pixel in an image, giving you complete control over the image's appearance.
+The `image.scan()` method is a powerful tool that can be used to achieve a variety of effects. By understanding how to use this method, you can create stunning images and graphics.
   
   
